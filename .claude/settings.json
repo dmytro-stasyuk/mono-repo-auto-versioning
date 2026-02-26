@@ -1,0 +1,56 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(grep:*)",
+      "Bash(awk:*)",
+      "Bash(sed:*)",
+      "Bash(cut:*)",
+      "Bash(git add:*)",
+      "Bash(cd:*)",
+      "mcp__jetbrains__*",
+      "Edit(/Users/dmytro/Projects/Plugins/jira_plugins/**)",
+      "Read(/Users/dmytro/Projects/Plugins/jira_plugins/**)",
+      "Write(/Users/dmytro/Projects/Plugins/jira_plugins/**)"
+    ],
+    "deny": [
+      "Edit(pom.xml)",
+      "Write(pom.xml)",
+      "Edit(.git/**)",
+      "Write(.git/**)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/post-edit.sh \"$1\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/session-start.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
