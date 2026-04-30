@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
-        <relativePath/>
+        <groupId>com.example.monorepo</groupId>
+        <artifactId>auto-versioning-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../auto-versioning-parent/pom.xml</relativePath>
     </parent>
 
     <groupId>com.example.monorepo</groupId>
@@ -20,7 +20,8 @@
     <description>Aggregator POM for multi-module mono repo</description>
 
     <properties>
-        <java.version>17</java.version>
+        <!-- java.version (22) and compiler source/target are inherited from auto-versioning-parent -->
+        <spring-boot.version>3.2.5</spring-boot.version>
     </properties>
 
     <modules>
@@ -38,6 +39,15 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Boot BOM (replaces inheritance from spring-boot-starter-parent) -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.example.monorepo</groupId>
                 <artifactId>common-models</artifactId>
@@ -55,4 +65,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Pinned here because we no longer inherit from spring-boot-starter-parent -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
