@@ -6,11 +6,13 @@
 
     <parent>
         <groupId>com.example.monorepo</groupId>
-        <artifactId>mono-repo</artifactId>
+        <artifactId>auto-versioning-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../auto-versioning-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>service-notification</artifactId>
+    <version>1.4.0-SNAPSHOT</version>
     <name>Notification Service</name>
     <description>Notification service</description>
 
@@ -18,10 +20,12 @@
         <dependency>
             <groupId>com.example.monorepo</groupId>
             <artifactId>common-models</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.example.monorepo</groupId>
             <artifactId>common-utils</artifactId>
+            <version>0.2.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

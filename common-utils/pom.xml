@@ -6,11 +6,13 @@
 
     <parent>
         <groupId>com.example.monorepo</groupId>
-        <artifactId>mono-repo</artifactId>
+        <artifactId>auto-versioning-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../auto-versioning-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>common-utils</artifactId>
+    <version>0.2.0-SNAPSHOT</version>
     <name>Common Utils</name>
     <description>Shared utilities and helpers</description>
 </project>
