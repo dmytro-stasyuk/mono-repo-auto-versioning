@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extensions>
+    <extension>
+        <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
+        <artifactId>gitflow-incremental-builder</artifactId>
+        <version>4.5.2</version>
+    </extension>
+</extensions>
